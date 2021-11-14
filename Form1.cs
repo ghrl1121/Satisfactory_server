@@ -39,18 +39,21 @@ namespace Satisfactory_서버용
                 p.StartInfo.FileName = "commd.bat";
                 p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
                 p.Start();
+                p.WaitForExit(1000);
                 File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] lines = {"@echo off", "FactoryServer.exe -log -unattended","pause" };
+            string[] lines = {"@echo off", "FactoryServer.exe -log -unattended" };
             File.WriteAllLines(@"C:\satisfactory_dedicated\실행.bat", lines);
             Process a = new Process();
             a.StartInfo.FileName = "실행.bat";
             a.StartInfo.WorkingDirectory = @"C:\satisfactory_dedicated";
             a.Start();
+            a.WaitForExit(1000);
+            File.Delete(@"C:\satisfactory_dedicated\실행.bat");
             
         }
         private void button3_Click(object sender, EventArgs e)
