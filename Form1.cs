@@ -45,18 +45,25 @@ namespace Satisfactory_서버용
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] lines = {"@echo off", "FactoryServer.exe -log -unattended" };
+            string[] lines = {"@echo off", "FactoryServer.exe -log -unattended","pause" };
             File.WriteAllLines(@"C:\satisfactory_dedicated\실행.bat", lines);
             Process a = new Process();
             a.StartInfo.FileName = "실행.bat";
             a.StartInfo.WorkingDirectory = @"C:\satisfactory_dedicated";
             a.Start();
-            File.Delete(@"C:\satisfactory_dedicated\실행.bat");
+            
         }
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form2 m = new Form2();
+            m.Show();
+        }
+        
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/ghrl1121/Satisfactory_server");
         }
+
+      
     }
 }

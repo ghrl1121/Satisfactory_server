@@ -65,6 +65,7 @@ namespace Satisfactory_서버용
             this.button3.TabIndex = 2;
             this.button3.Text = "서버 편집";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -107,7 +108,7 @@ namespace Satisfactory_서버용
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Satisfactory 서버";
             this.ResumeLayout(false);
             this.PerformLayout();
 
