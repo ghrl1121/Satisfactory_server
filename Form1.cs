@@ -53,5 +53,10 @@ namespace Satisfactory_서버용
             a.Start();
             File.Delete(@"C:\satisfactory_dedicated\실행.bat");
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/ghrl1121/Satisfactory_server");
+        }
     }
 }
