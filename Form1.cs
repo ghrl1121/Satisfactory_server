@@ -30,7 +30,9 @@ namespace Satisfactory_서버용
             A.Filter = "실행파일(*.exe)|*.exe;";
             DialogResult d = A.ShowDialog();
             if (d == DialogResult.OK)
-            {
+                if(A.FileName  == "steamcmd.exe" )
+                { 
+            
                 string fileName = A.FileName;
                 
                 string[] lines = { "@echo off","steamcmd.exe +login anonymous +force_install_dir C:\\Satisfactory_Dedicated +app_update 1690800 +quit", "pause" };
@@ -41,7 +43,13 @@ namespace Satisfactory_서버용
                 p.Start();
                 p.WaitForExit(1000);
                 File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
-            }
+                }
+            else
+                {
+                    MessageBox.Show("앗 stamcmd.exe를 선택을 안하셨습니다.");
+                    Form3 m = new Form3();
+                    m.ShowDialog();
+                }
         }
 
         private void button2_Click(object sender, EventArgs e)
