@@ -30,11 +30,8 @@ namespace Satisfactory_서버용
             A.Filter = "실행파일(*.exe)|*.exe;";
             DialogResult d = A.ShowDialog();
             if (d == DialogResult.OK)
-                
                 { 
-            
                 string fileName = A.FileName;
-                
                 string[] lines = { "@echo off","steamcmd.exe +login anonymous +force_install_dir C:\\Satisfactory_Dedicated +app_update 1690800 +quit", "pause" };
                 File.WriteAllLines(Path.GetDirectoryName(A.FileName)+"\\commd.bat", lines);
                 Process p = new Process();
