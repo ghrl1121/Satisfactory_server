@@ -30,7 +30,7 @@ namespace Satisfactory_서버용
             A.Filter = "실행파일(*.exe)|*.exe;";
             DialogResult d = A.ShowDialog();
             if (d == DialogResult.OK)
-                if(A.FileName  == "steamcmd.exe" )
+                
                 { 
             
                 string fileName = A.FileName;
