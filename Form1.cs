@@ -30,23 +30,32 @@ namespace Satisfactory_서버용
             A.Filter = "실행파일(*.exe)|*.exe;";
             DialogResult d = A.ShowDialog();
             if (d == DialogResult.OK)
-                { 
-                string fileName = A.FileName;
-                string[] lines = { "@echo off","steamcmd.exe +login anonymous +force_install_dir C:\\Satisfactory_Dedicated +app_update 1690800 +quit", "pause" };
-                File.WriteAllLines(Path.GetDirectoryName(A.FileName)+"\\commd.bat", lines);
-                Process p = new Process();
-                p.StartInfo.FileName = "commd.bat";
-                p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
-                p.Start();
-                p.WaitForExit(1000);
-                File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
+            {
+                if (Path.GetFileName(A.FileName) == "steamcmd.exe")
+                {
+                    string fileName = A.FileName;
+                    string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\Satisfactory_Dedicated +app_update 1690800 +quit", "pause" };
+                    File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                    Process p = new Process();
+                    p.StartInfo.FileName = "commd.bat";
+                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
+                    p.Start();
+                    p.WaitForExit(1000);
+                    File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
                 }
-            else
+                else
                 {
                     MessageBox.Show("앗 stamcmd.exe를 선택을 안하셨습니다.");
                     Form3 m = new Form3();
                     m.ShowDialog();
-                }
+                }  
+            }
+            else if (d == DialogResult.Cancel)
+            {
+                MessageBox.Show("파일이 없습니까?");
+                Form3 m = new Form3();
+                m.ShowDialog();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
