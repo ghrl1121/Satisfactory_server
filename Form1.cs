@@ -60,20 +60,21 @@ namespace Satisfactory_서버용
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] lines = {"@echo off", "FactoryServer.exe -log -unattended" };
-            File.WriteAllLines(@"C:\satisfactory_dedicated\실행.bat", lines);
-            Process a = new Process();
-            a.StartInfo.FileName = "실행.bat";
-            a.StartInfo.WorkingDirectory = @"C:\satisfactory_dedicated";
-            a.Start();
-            a.WaitForExit(1000);
-            File.Delete(@"C:\satisfactory_dedicated\실행.bat");
+            Form4 d = new Form4();
+            d.Show();
             
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Form2 m = new Form2();
-            m.Show();
+            MessageBox.Show("잠깐 실행 먼저 하시고 접속하신후에 눌려 주세요 아니면 오류 납니다!");
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\..\Local\FactoryGame\Saved\SaveGames\server"))
+            {
+                Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\..\Local\FactoryGame\Saved\SaveGames\server");
+            }
+            else
+            {
+                MessageBox.Show("실행후 만들고 눌려 주세요!");
+            }
         }
         
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
