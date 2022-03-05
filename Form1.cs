@@ -61,8 +61,7 @@ namespace Satisfactory_서버용
         private void button2_Click(object sender, EventArgs e)
         {
             Form4 d = new Form4();
-            d.Show();
-            
+            d.Show();            
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -81,7 +80,5 @@ namespace Satisfactory_서버용
         {
             Process.Start("https://github.com/ghrl1121/Satisfactory_server");
         }
-
-      
     }
 }

@@ -35,7 +35,6 @@ namespace Satisfactory_서버용
             //아무것도 없을경우
             if (textBox1.Text == "" || textBox3.Text == "")
             {
-
                 MessageBox.Show("숫자를 넣어 주세요");
             }
             else
