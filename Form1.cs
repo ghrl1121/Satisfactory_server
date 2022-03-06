@@ -23,7 +23,7 @@ namespace Satisfactory_서버용
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("잠깐 steamcmd.exe 가 있어야 됩니다.");
-            
+            AC:
             OpenFileDialog A = new OpenFileDialog();
             A.Title = "steamcmd.exe 선택하세요";
             A.FileName = "steamcmd.exe";
@@ -46,8 +46,7 @@ namespace Satisfactory_서버용
                 else
                 {
                     MessageBox.Show("앗 stamcmd.exe를 선택을 안하셨습니다.");
-                    Form3 m = new Form3();
-                    m.ShowDialog();
+                    goto AC;                    
                 }  
             }
             else if (d == DialogResult.Cancel)

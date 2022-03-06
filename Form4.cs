@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.IO;
 
 namespace Satisfactory_서버용
@@ -57,6 +58,12 @@ namespace Satisfactory_서버용
                         p.Start();
                         p.WaitForExit(1000);
                         File.Delete(@"C:\satisfactory_dedicated\b.bat");
+                        Process[] u = Process.GetProcessesByName("cmd");
+                        if(u.GetLength(0) > 0)
+                        {
+                            u[0].Kill();
+                        }
+                        Close();
                     }
                     else
                     {
@@ -69,6 +76,12 @@ namespace Satisfactory_서버용
                         p.Start();
                         p.WaitForExit(1000);
                         File.Delete(@"C:\satisfactory_dedicated\c.bat");
+                        Process[] u = Process.GetProcessesByName("cmd");
+                        if (u.GetLength(0) > 0)
+                        {
+                            u[0].Kill();
+                        }
+                        Close();
                     }
                 }
             }
