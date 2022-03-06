@@ -49,7 +49,7 @@ namespace Satisfactory_서버용
                 {
                     if (checkBox1.Checked == true)
                     {
-                        //클릭했을때 만들기
+                        //클릭했을때 만들기                        
                         string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -"+Beacon + " -port=" + Port + " -unattended" + " -log"};
                         File.WriteAllLines(@"C:\satisfactory_dedicated\b.bat", lines);
                         Process p = new Process();
