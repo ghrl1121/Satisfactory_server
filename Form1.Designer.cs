@@ -43,7 +43,7 @@ namespace Satisfactory_서버용
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 57);
             this.button1.TabIndex = 0;
-            this.button1.Text = "서버 구성";
+            this.button1.Text = "서버 다운";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
