@@ -28,7 +28,8 @@ namespace Satisfactory_서버용
            if (u.GetLength(0) > 0)
             {
                 MessageBox.Show("어라 steamcmd.exe 가 실행 되고 있습니다 \r 강재 종료 됩니다.!");
-                u[0].CloseMainWindow();                
+                u[0].Kill();
+                u[0].WaitForExit(1000);                
                 goto B;
             }
             else { 
