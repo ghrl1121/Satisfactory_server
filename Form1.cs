@@ -70,8 +70,16 @@ namespace Satisfactory_서버용
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form4 d = new Form4();
-            d.Show();            
+            if(Directory.Exists(@"C:\Satisfactory_Dedicated"))
+            {
+                Form4 d = new Form4();
+                d.Show();
+            }
+            else
+            {
+                MessageBox.Show("파일이 없습니다! \n서버 다운후 다시 클릭하세요");
+            }
+                    
         }
         private void button3_Click(object sender, EventArgs e)
         {
