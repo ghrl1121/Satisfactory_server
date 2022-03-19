@@ -71,7 +71,7 @@ namespace Satisfactory_서버용
         private void button2_Click(object sender, EventArgs e)
         {
             if(Directory.Exists(@"C:\Satisfactory_Dedicated"))
-            {
+            { 
                 Form4 d = new Form4();
                 d.Show();
             }

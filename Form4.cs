@@ -14,10 +14,23 @@ using System.IO;
 namespace Satisfactory_서버용
 {
     public partial class Form4 : Form
-    {
+    {            
         public Form4()
         {
             InitializeComponent();
+            Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");
+            if(M.GetLength(0) > 0)
+            {
+                label8.Text = "실행중입니다. \n\r포트를 바꿔주세요 오류 납니다!";
+                textBox1.Text = "15778";
+                textBox3.Text = "7778";
+                //실행할때마다 올려야하는데...;;
+                label2.Text = "15001";
+            }
+            else
+            {
+
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -50,7 +63,7 @@ namespace Satisfactory_서버용
                     if (checkBox1.Checked == true)
                     {
                         //클릭했을때 만들기                        
-                        string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -"+Beacon + " -port=" + Port + " -unattended" + " -log"};
+                        string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -log"};
                         File.WriteAllLines(@"C:\satisfactory_dedicated\b.bat", lines);
                         Process p = new Process();
                         p.StartInfo.FileName = "b.bat";
@@ -68,7 +81,7 @@ namespace Satisfactory_서버용
                     else
                     {
                         //없음
-                        string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -"+Beacon + " -port=" + Port + " -log"};
+                        string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -log"};
                         File.WriteAllLines(@"C:\satisfactory_dedicated\c.bat", lines);
                         Process p = new Process();
                         p.StartInfo.FileName = "c.bat";

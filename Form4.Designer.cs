@@ -34,12 +34,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -101,16 +102,6 @@
             this.linkLabel1.Text = "참조";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("굴림", 12F);
-            this.label2.Location = new System.Drawing.Point(115, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "BeaconPort=15000";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -162,11 +153,32 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "기본값 7777";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 12F);
+            this.label2.Location = new System.Drawing.Point(115, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "15000";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 12F);
+            this.label8.Location = new System.Drawing.Point(26, 267);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(7, 16);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "\r\n";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 322);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
@@ -194,11 +206,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label8;
     }
 }
