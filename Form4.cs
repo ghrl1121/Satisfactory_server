@@ -17,19 +17,32 @@ namespace Satisfactory_서버용
     {            
         public Form4()
         {
+            
             InitializeComponent();
             Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");
             if(M.GetLength(0) > 0)
             {
-                label8.Text = "실행중입니다. \n\r포트를 바꿔주세요 오류 납니다!";
+                label8.Text = "실행중입니다. \n\r포트를 바꿔주세요 오류 납니다!\n\r옆 중지 누르면 서버중지(전부)됩니다";
                 textBox1.Text = "15778";
                 textBox3.Text = "7778";
                 //실행할때마다 올려야하는데...;;
                 label2.Text = "15001";
+                linkLabel2.Text = "중지";
             }
             else
             {
 
+            }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");               
+            if(M.GetLongLength(0)>0)
+            {
+                M[0].Kill();
+                M[0].WaitForExit(1000);
+                Close();
             }
         }
 
@@ -99,5 +112,7 @@ namespace Satisfactory_서버용
                 }
             }
         }
+
+        
     }
 }
