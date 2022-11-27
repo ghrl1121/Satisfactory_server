@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 
 namespace Satisfactory_서버용
@@ -18,6 +19,16 @@ namespace Satisfactory_서버용
         public Form1()
         {
             InitializeComponent();
+            if(File.Exists("txat.lal"))
+            {
+                StreamReader sr = new StreamReader("txat.lal");
+                textBox1.Text = sr.ReadLine();
+                sr.Close();
+            }
+            else
+            {
+                textBox1.Text = "설치 먼저 해 주세요";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,9 +54,30 @@ namespace Satisfactory_서버용
                 {
                     if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                     {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.Title = "저장될 위치 설정";
+                        saveFileDialog.FileName = "b.ini";
+                        DialogResult saveResult = saveFileDialog.ShowDialog();
+                        if (saveResult == DialogResult.OK)
+                        {
+                            //선언 하면 저정
+                            textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
+                            string mest = textBox1.Text;
+                            string[] ping = { textBox1.Text };
+                            File.WriteAllLines("txat.lal", ping);
+                            //설치
+                            string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir "+mest+" +app_update 1690800 +quit", "pause" };
+                            File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                            //필요없는 파일 삭제
+                            File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
+                        }
+                        else
+                        {
+                            MessageBox.Show("저장될 위치를 넣어 주세요!");
+                        }
                         string fileName = A.FileName;
-                        string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\Satisfactory_Dedicated +app_update 1690800 +quit", "pause" };
-                        File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                        
+                        
                         Process p = new Process();
                         p.StartInfo.FileName = "commd.bat";
                         p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
@@ -70,7 +102,7 @@ namespace Satisfactory_서버용
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(Directory.Exists(@"C:\Satisfactory_Dedicated"))
+            if(Directory.Exists(textBox1.Text))
             { 
                 Form4 d = new Form4();
                 d.Show();

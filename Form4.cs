@@ -19,6 +19,11 @@ namespace Satisfactory_서버용
         {
             
             InitializeComponent();
+            
+            StreamReader sr = new StreamReader("txat.lal");
+            textBox2.Text = sr.ReadLine();
+            sr.Close();
+
             Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");
             if(M.GetLength(0) > 0)
             {
@@ -29,10 +34,7 @@ namespace Satisfactory_서버용
                 label2.Text = "15001";
                 linkLabel2.Text = "중지";
             }
-            else
-            {
-
-            }
+            
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -76,14 +78,14 @@ namespace Satisfactory_서버용
                     if (checkBox1.Checked == true)
                     {
                         //클릭했을때 만들기                        
-                        string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -log"};
-                        File.WriteAllLines(@"C:\satisfactory_dedicated\b.bat", lines);
+                        string[] lines = { "@echo off", textBox2.Text+@"\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -log"};
+                        File.WriteAllLines(textBox2.Text+@"\b.bat", lines);
                         Process p = new Process();
                         p.StartInfo.FileName = "b.bat";
-                        p.StartInfo.WorkingDirectory = @"C:\satisfactory_dedicated";
+                        p.StartInfo.WorkingDirectory = textBox2.Text;
                         p.Start();
                         p.WaitForExit(1000);
-                        File.Delete(@"C:\satisfactory_dedicated\b.bat");
+                        File.Delete(textBox2.Text+@"\b.bat");
                         Process[] u = Process.GetProcessesByName("cmd");
                         if(u.GetLength(0) > 0)
                         {
@@ -94,14 +96,14 @@ namespace Satisfactory_서버용
                     else
                     {
                         //없음
-                        string[] lines = { "@echo off", @"C:\satisfactory_dedicated\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -log"};
-                        File.WriteAllLines(@"C:\satisfactory_dedicated\c.bat", lines);
+                        string[] lines = { "@echo off", textBox2.Text+@"\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -log"};
+                        File.WriteAllLines(textBox2.Text+@"\c.bat", lines);
                         Process p = new Process();
                         p.StartInfo.FileName = "c.bat";
-                        p.StartInfo.WorkingDirectory = @"C:\satisfactory_dedicated";
+                        p.StartInfo.WorkingDirectory = textBox2.Text;
                         p.Start();
                         p.WaitForExit(1000);
-                        File.Delete(@"C:\satisfactory_dedicated\c.bat");
+                        File.Delete(textBox2.Text+@"\c.bat");
                         Process[] u = Process.GetProcessesByName("cmd");
                         if (u.GetLength(0) > 0)
                         {
@@ -111,8 +113,6 @@ namespace Satisfactory_서버용
                     }
                 }
             }
-        }
-
-        
+        }    
     }
 }
