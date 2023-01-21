@@ -54,6 +54,7 @@ namespace Satisfactory_서버용
                 {
                     if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                     {
+                        C:
                         SaveFileDialog saveFileDialog = new SaveFileDialog();
                         saveFileDialog.Title = "저장될 위치 설정";
                         saveFileDialog.FileName = "b.ini";
@@ -74,6 +75,7 @@ namespace Satisfactory_서버용
                         else
                         {
                             MessageBox.Show("저장될 위치를 넣어 주세요!");
+                            goto C;
                         }
                         string fileName = A.FileName;
                         
