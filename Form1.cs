@@ -34,74 +34,136 @@ namespace Satisfactory_서버용
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("잠깐 steamcmd.exe 가 있어야 됩니다.");
-            B:
+        B:
             Process[] u = Process.GetProcessesByName("steamcmd");
-           if (u.GetLength(0) > 0)
+            if (u.GetLength(0) > 0)
             {
                 MessageBox.Show("어라 steamcmd.exe 가 실행 되고 있습니다 \r 강재 종료 됩니다.!");
                 u[0].Kill();
-                u[0].WaitForExit(1000);                
+                u[0].WaitForExit(1000);
                 goto B;
             }
-            else { 
-            AC:
-            OpenFileDialog A = new OpenFileDialog();
-            A.Title = "steamcmd.exe 선택하세요";
-            A.FileName = "steamcmd.exe";
-            A.Filter = "실행파일(*.exe)|*.exe;";
-            DialogResult d = A.ShowDialog();
-                if (d == DialogResult.OK)
+            else
+            {
+                //배타 넣기
+                if (checkBox1.Checked == true)
                 {
-                    if (Path.GetFileName(A.FileName) == "steamcmd.exe")
+                 AC:
+                    OpenFileDialog A = new OpenFileDialog();
+                    A.Title = "steamcmd.exe 선택하세요";
+                    A.FileName = "steamcmd.exe";
+                    A.Filter = "실행파일(*.exe)|*.exe;";
+                    DialogResult d = A.ShowDialog();
+                    if (d == DialogResult.OK)
                     {
-                        C:
-                        SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.Title = "저장될 위치 설정";
-                        saveFileDialog.FileName = "b.ini";
-                        DialogResult saveResult = saveFileDialog.ShowDialog();
-                        if (saveResult == DialogResult.OK)
+                        if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                         {
-                            //선언 하면 저정
-                            textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
-                            string mest = textBox1.Text;
-                            string[] ping = { textBox1.Text };
-                            File.WriteAllLines("txat.lal", ping);
-                            //설치
-                            string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir "+mest+" +app_update 1690800 +quit", "pause" };
-                            File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
-                            //필요없는 파일 삭제
-                            File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
+                        C:
+                            SaveFileDialog saveFileDialog = new SaveFileDialog();
+                            saveFileDialog.Title = "저장될 위치 설정";
+                            saveFileDialog.FileName = "b.ini";
+                            DialogResult saveResult = saveFileDialog.ShowDialog();
+                            if (saveResult == DialogResult.OK)
+                            {
+                                //선언 하면 저정
+                                textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
+                                string mest = textBox1.Text;
+                                string[] ping = { textBox1.Text };
+                                File.WriteAllLines("txat.lal", ping);
+                                //설치
+                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
+                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                                //필요없는 파일 삭제
+                                File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
+                            }
+                            else
+                            {
+                                MessageBox.Show("저장될 위치를 넣어 주세요!");
+                                goto C;
+                            }
+                            string fileName = A.FileName;
+
+
+                            Process p = new Process();
+                            p.StartInfo.FileName = "commd.bat";
+                            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
+                            p.Start();
+                            p.WaitForExit(1000);
+                            File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
                         }
                         else
                         {
-                            MessageBox.Show("저장될 위치를 넣어 주세요!");
-                            goto C;
+                            MessageBox.Show("앗 stamcmd.exe를 선택을 안하셨습니다.");
+                            goto AC;
                         }
-                        string fileName = A.FileName;
-                        
-                        
-                        Process p = new Process();
-                        p.StartInfo.FileName = "commd.bat";
-                        p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
-                        p.Start();
-                        p.WaitForExit(1000);
-                        File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
                     }
-                    else
+                    else if (d == DialogResult.Cancel)
                     {
-                        MessageBox.Show("앗 stamcmd.exe를 선택을 안하셨습니다.");
-                        goto AC;
+                        MessageBox.Show("파일이 없습니까?");
+                        Form3 m = new Form3();
+                        m.ShowDialog();
                     }
                 }
-                else if (d == DialogResult.Cancel)
+                else
                 {
-                    MessageBox.Show("파일이 없습니까?");
-                    Form3 m = new Form3();
-                    m.ShowDialog();
+                    AC:
+                    OpenFileDialog A = new OpenFileDialog();
+                    A.Title = "steamcmd.exe 선택하세요";
+                    A.FileName = "steamcmd.exe";
+                    A.Filter = "실행파일(*.exe)|*.exe;";
+                    DialogResult d = A.ShowDialog();
+                    if (d == DialogResult.OK)
+                    {
+                        if (Path.GetFileName(A.FileName) == "steamcmd.exe")
+                        {
+                        C:
+                            SaveFileDialog saveFileDialog = new SaveFileDialog();
+                            saveFileDialog.Title = "저장될 위치 설정";
+                            saveFileDialog.FileName = "b.ini";
+                            DialogResult saveResult = saveFileDialog.ShowDialog();
+                            if (saveResult == DialogResult.OK)
+                            {
+                                //선언 하면 저정
+                                textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
+                                string mest = textBox1.Text;
+                                string[] ping = { textBox1.Text };
+                                File.WriteAllLines("txat.lal", ping);
+                                //설치
+                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit", "pause" };
+                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                                //필요없는 파일 삭제
+                                File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
+                            }
+                            else
+                            {
+                                MessageBox.Show("저장될 위치를 넣어 주세요!");
+                                goto C;
+                            }
+                            string fileName = A.FileName;
+
+
+                            Process p = new Process();
+                            p.StartInfo.FileName = "commd.bat";
+                            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
+                            p.Start();
+                            p.WaitForExit(1000);
+                            File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
+                        }
+                        else
+                        {
+                            MessageBox.Show("앗 stamcmd.exe를 선택을 안하셨습니다.");
+                            goto AC;
+                        }
+                    }
+                    else if (d == DialogResult.Cancel)
+                    {
+                        MessageBox.Show("파일이 없습니까?");
+                        Form3 m = new Form3();
+                        m.ShowDialog();
+                    }
                 }
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if(Directory.Exists(textBox1.Text))
