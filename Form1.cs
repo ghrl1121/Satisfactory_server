@@ -176,11 +176,8 @@ namespace Satisfactory_서버용
         {
             if(Directory.Exists(textBox1.Text))
             { 
-                Form4 d = new Form4(textBox1.Text);              
-                
-                d.Show();
-                
-                
+                Form4 d = new Form4(textBox1.Text);                             
+                d.Show();    
             }
             else
             {
