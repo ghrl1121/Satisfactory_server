@@ -189,10 +189,14 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
+            this.textBox2.HideSelection = false;
             this.textBox2.Location = new System.Drawing.Point(118, 43);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ShortcutsEnabled = false;
             this.textBox2.Size = new System.Drawing.Size(195, 21);
             this.textBox2.TabIndex = 16;
+            this.textBox2.TabStop = false;
+            this.textBox2.WordWrap = false;
             // 
             // label9
             // 
@@ -225,6 +229,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox1);
+            this.KeyPreview = true;
             this.Name = "Form4";
             this.Text = "실행 설정";
             this.ResumeLayout(false);

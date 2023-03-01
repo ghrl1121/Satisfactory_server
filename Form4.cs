@@ -10,20 +10,20 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace Satisfactory_서버용
 {
     public partial class Form4 : Form
-    {            
+    {
+       
+
         public Form4()
         {
             
             InitializeComponent();
+            //파일 확인 채크
             
-            StreamReader sr = new StreamReader("txat.lal");
-            textBox2.Text = sr.ReadLine();
-            sr.Close();
-
             Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");
             if(M.GetLength(0) > 0)
             {
@@ -35,6 +35,11 @@ namespace Satisfactory_서버용
                 linkLabel2.Text = "중지";
             }
             
+        }
+        public Form4(string data)
+        {
+            InitializeComponent();
+            textBox2.Text = data;
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Satisfactory_서버용
@@ -19,13 +20,13 @@ namespace Satisfactory_서버용
         public Form1()
         {
             InitializeComponent();
-            if(File.Exists("txat.lal"))
+            if (File.Exists("txat.lal"))
             {
                 StreamReader sr = new StreamReader("txat.lal");
                 textBox1.Text = sr.ReadLine();
                 sr.Close();
             }
-            else if(File.Exists("beta.lal"))
+            else if (File.Exists("beta.lal"))
             {
                 StreamReader su = new StreamReader("beta.lal");
                 textBox1.Text = su.ReadLine();
@@ -36,9 +37,8 @@ namespace Satisfactory_서버용
             {
                 textBox1.Text = "설치 먼저 해 주세요";
             }
-
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("잠깐 steamcmd.exe 가 있어야 됩니다.");
@@ -176,8 +176,11 @@ namespace Satisfactory_서버용
         {
             if(Directory.Exists(textBox1.Text))
             { 
-                Form4 d = new Form4();
+                Form4 d = new Form4(textBox1.Text);              
+                
                 d.Show();
+                
+                
             }
             else
             {
