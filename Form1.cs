@@ -202,5 +202,23 @@ namespace Satisfactory_서버용
         {
             Process.Start("https://github.com/ghrl1121/Satisfactory_server");
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                if (File.Exists("beta.lal"))
+                {
+                    StreamReader su = new StreamReader("beta.lal");
+                    textBox1.Text = su.ReadLine();
+                    checkBox1.Checked = true;
+                    su.Close();
+                }
+                else
+                {
+                    textBox1.Text = "파일이 없습니다 설치 먼저 해주세요";
+                }
+            }
+        }
     }
 }
