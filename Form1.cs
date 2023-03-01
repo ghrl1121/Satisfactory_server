@@ -219,7 +219,7 @@ namespace Satisfactory_서버용
                     textBox1.Text = "파일이 없습니다 설치 먼저 해주세요";
                 }
             }
-            else
+            else if (checkBox1.Checked == false) 
             {
                 if(File.Exists("txat.lal"))
                 {
