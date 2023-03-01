@@ -219,6 +219,19 @@ namespace Satisfactory_서버용
                     textBox1.Text = "파일이 없습니다 설치 먼저 해주세요";
                 }
             }
+            else
+            {
+                if(File.Exists("txat.lal"))
+                {
+                    StreamReader bv = new StreamReader("txat.lal");
+                    textBox1.Text = bv.ReadLine();
+                    bv.Close();
+                }
+                else
+                {
+                    textBox1.Text = "파일이 없습니다 설치 먼저 해주세요";
+                }
+            }
         }
     }
 }
