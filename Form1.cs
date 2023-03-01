@@ -25,10 +25,18 @@ namespace Satisfactory_서버용
                 textBox1.Text = sr.ReadLine();
                 sr.Close();
             }
+            else if(File.Exists("beta.lal"))
+            {
+                StreamReader su = new StreamReader("beta.lal");
+                textBox1.Text = su.ReadLine();
+                checkBox1.Checked = true;
+                su.Close();
+            }
             else
             {
                 textBox1.Text = "설치 먼저 해 주세요";
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,7 +66,7 @@ namespace Satisfactory_서버용
                     {
                         if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                         {
-                        C:
+                           C:
                             SaveFileDialog saveFileDialog = new SaveFileDialog();
                             saveFileDialog.Title = "저장될 위치 설정";
                             saveFileDialog.FileName = "b.ini";
@@ -69,7 +77,7 @@ namespace Satisfactory_서버용
                                 textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
                                 string mest = textBox1.Text;
                                 string[] ping = { textBox1.Text };
-                                File.WriteAllLines("txat.lal", ping);
+                                File.WriteAllLines("beta.lal", ping);
                                 //설치
                                 string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
                                 File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
@@ -116,7 +124,7 @@ namespace Satisfactory_서버용
                     {
                         if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                         {
-                        C:
+                         C:
                             SaveFileDialog saveFileDialog = new SaveFileDialog();
                             saveFileDialog.Title = "저장될 위치 설정";
                             saveFileDialog.FileName = "b.ini";
