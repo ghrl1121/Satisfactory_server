@@ -207,6 +207,7 @@ namespace Satisfactory_서버용
         {
             if (checkBox1.Checked == true)
             {
+                button1.Text = "익스페리멘탈\n\r서버다운로드";
                 if (File.Exists("beta.lal"))
                 {
                     StreamReader su = new StreamReader("beta.lal");
@@ -221,8 +222,10 @@ namespace Satisfactory_서버용
             }
             else if (checkBox1.Checked == false) 
             {
-                if(File.Exists("txat.lal"))
+                button1.Text = "얼리 액세스\n\r서버다운로드";
+                if (File.Exists("txat.lal"))
                 {
+                    
                     StreamReader bv = new StreamReader("txat.lal");
                     textBox1.Text = bv.ReadLine();
                     bv.Close();

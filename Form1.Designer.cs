@@ -42,17 +42,17 @@ namespace Satisfactory_서버용
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(12, 11);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 57);
+            this.button1.Size = new System.Drawing.Size(94, 57);
             this.button1.TabIndex = 0;
-            this.button1.Text = "서버 다운";
+            this.button1.Text = "얼리 액서스\r\n서버다운로드";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(93, 12);
+            this.button2.Location = new System.Drawing.Point(112, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 57);
             this.button2.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace Satisfactory_서버용
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(174, 12);
+            this.button3.Location = new System.Drawing.Point(193, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 57);
             this.button3.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace Satisfactory_서버용
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(91, 101);
+            this.label1.Location = new System.Drawing.Point(110, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 12);
             this.label1.TabIndex = 3;
@@ -82,7 +82,7 @@ namespace Satisfactory_서버용
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(91, 143);
+            this.linkLabel1.Location = new System.Drawing.Point(220, 120);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(57, 12);
             this.linkLabel1.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace Satisfactory_서버용
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(91, 122);
+            this.label2.Location = new System.Drawing.Point(110, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 12);
             this.label2.TabIndex = 5;
@@ -103,7 +103,7 @@ namespace Satisfactory_서버용
             // 
             this.textBox1.Enabled = false;
             this.textBox1.HideSelection = false;
-            this.textBox1.Location = new System.Drawing.Point(93, 74);
+            this.textBox1.Location = new System.Drawing.Point(102, 74);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(156, 21);
             this.textBox1.TabIndex = 6;
@@ -120,11 +120,11 @@ namespace Satisfactory_서버용
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 100);
+            this.checkBox1.Location = new System.Drawing.Point(12, 101);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 28);
+            this.checkBox1.Size = new System.Drawing.Size(104, 16);
             this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "서버 배타 \r\n버전";
+            this.checkBox1.Text = "서버 배타 버전";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -132,7 +132,7 @@ namespace Satisfactory_서버용
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 169);
+            this.ClientSize = new System.Drawing.Size(283, 169);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
