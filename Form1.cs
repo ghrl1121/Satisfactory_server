@@ -56,6 +56,7 @@ namespace Satisfactory_서버용
                 //배타 넣기
                 if (checkBox1.Checked == true)
                 {
+                    MessageBox.Show("잠깐!! 폴더를 한글로 하지 마세요 요류납니다!!\r\n예) 딱다구리폴더에 steamcmd.exe 넣었으면 실행후 바로 종료됨(오류임)");
                  AC:
                     OpenFileDialog A = new OpenFileDialog();
                     A.Title = "steamcmd.exe 선택하세요";
@@ -66,7 +67,8 @@ namespace Satisfactory_서버용
                     {
                         if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                         {
-                           C:
+                            MessageBox.Show("이것도 마찬가기 입니다 한글로 하실경우 원하는 위치가 설치가 안됩니다 \r\n예) 딱다구리폴더에 넣음 하지만 파일은 steamcmd.exe 파일에 있는 steamapps폴더에 저장이 됨");
+                        C:
                             SaveFileDialog saveFileDialog = new SaveFileDialog();
                             saveFileDialog.Title = "저장될 위치 설정";
                             saveFileDialog.FileName = "b.ini";
@@ -114,7 +116,8 @@ namespace Satisfactory_서버용
                 }
                 else
                 {
-                    AC:
+                    MessageBox.Show("잠깐!! 폴더를 한글로 하지 마세요 요류납니다!!\r\n예) 딱다구리폴더에 steamcmd.exe 넣었으면 실행후 바로 종료됨(오류임)");
+                AC:
                     OpenFileDialog A = new OpenFileDialog();
                     A.Title = "steamcmd.exe 선택하세요";
                     A.FileName = "steamcmd.exe";
@@ -124,7 +127,8 @@ namespace Satisfactory_서버용
                     {
                         if (Path.GetFileName(A.FileName) == "steamcmd.exe")
                         {
-                         C:
+                            MessageBox.Show("이것도 마찬가기 입니다 한글로 하실경우 원하는 위치가 설치가 안됩니다 \r\n예) 딱다구리폴더에 넣음 하지만 파일은 steamcmd.exe 파일에 있는 steamapps폴더에 저장이 됨");
+                        C:
                             SaveFileDialog saveFileDialog = new SaveFileDialog();
                             saveFileDialog.Title = "저장될 위치 설정";
                             saveFileDialog.FileName = "b.ini";
