@@ -132,6 +132,7 @@ namespace Satisfactory_서버용
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(283, 169);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
