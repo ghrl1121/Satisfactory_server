@@ -22,12 +22,14 @@ namespace Satisfactory_서버용
             InitializeComponent();
             if (File.Exists("txat.lal"))
             {
+                button1.Text = "얼리 액세스\n\r서버다운로드";
                 StreamReader sr = new StreamReader("txat.lal");
                 textBox1.Text = sr.ReadLine();
                 sr.Close();
             }
             else if (File.Exists("beta.lal"))
             {
+                button1.Text = "익스페리멘탈\n\r서버다운로드";
                 StreamReader su = new StreamReader("beta.lal");
                 textBox1.Text = su.ReadLine();
                 checkBox1.Checked = true;
