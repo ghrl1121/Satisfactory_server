@@ -231,7 +231,6 @@ namespace Satisfactory_서버용
                 button1.Text = "얼리 액세스\n\r서버다운로드";
                 if (File.Exists("txat.lal"))
                 {
-                    
                     StreamReader bv = new StreamReader("txat.lal");
                     textBox1.Text = bv.ReadLine();
                     bv.Close();
