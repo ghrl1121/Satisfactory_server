@@ -23,6 +23,7 @@ namespace Satisfactory_서버용
         private void button1_Click(object sender, EventArgs e)
         {
             Process.Start("https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip");
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

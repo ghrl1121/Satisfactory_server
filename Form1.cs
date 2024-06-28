@@ -48,6 +48,7 @@ namespace Satisfactory_서버용
             Process[] u = Process.GetProcessesByName("steamcmd");
             if (u.GetLength(0) > 0)
             {
+                //실행중  
                 MessageBox.Show("어라 steamcmd.exe 가 실행 되고 있습니다 \r 강재 종료 됩니다.!");
                 u[0].Kill();
                 u[0].WaitForExit(1000);
@@ -83,8 +84,10 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("beta.lal", ping);
                                 //설치
-                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
-                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                                
+                                var stramcd = new ProcessStartInfo(saveFileDialog.FileName, "+login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit");
+                                stramcd.UseShellExecute = false;
+                                Process.Start(stramcd);
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
@@ -94,8 +97,6 @@ namespace Satisfactory_서버용
                                 goto C;
                             }
                             string fileName = A.FileName;
-
-
                             Process p = new Process();
                             p.StartInfo.FileName = "commd.bat";
                             p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
@@ -143,8 +144,9 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("txat.lal", ping);
                                 //설치
-                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit", "pause" };
-                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                                var steamcmd = new ProcessStartInfo(A.FileName, "+login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit");
+                                steamcmd.UseShellExecute = false;
+                                Process.Start(steamcmd);
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
@@ -152,16 +154,7 @@ namespace Satisfactory_서버용
                             {
                                 MessageBox.Show("저장될 위치를 넣어 주세요!");
                                 goto C;
-                            }
-                            string fileName = A.FileName;
-
-
-                            Process p = new Process();
-                            p.StartInfo.FileName = "commd.bat";
-                            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
-                            p.Start();
-                            p.WaitForExit(1000);
-                            File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
+                            }                         
                         }
                         else
                         {

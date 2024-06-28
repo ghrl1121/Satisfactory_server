@@ -83,38 +83,16 @@ namespace Satisfactory_서버용
                     if (checkBox1.Checked == true)
                     {
                         //클릭했을때 만들기                        
-                        string[] lines = { "@echo off", textBox2.Text+@"\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -log"};
-                        File.WriteAllLines(textBox2.Text+@"\b.bat", lines);
-                        Process p = new Process();
-                        p.StartInfo.FileName = "b.bat";
-                        p.StartInfo.WorkingDirectory = textBox2.Text;
-                        p.Start();
-                        p.WaitForExit(1000);
-                        File.Delete(textBox2.Text+@"\b.bat");
-                        Process[] u = Process.GetProcessesByName("cmd");
-                        if(u.GetLength(0) > 0)
-                        {
-                            u[0].Kill();
-                        }
-                        Close();
+                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe" , " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -log");
+                        nem.UseShellExecute = false;
+                        Process.Start(nem);
                     }
                     else
                     {
                         //없음
-                        string[] lines = { "@echo off", textBox2.Text+@"\FactoryServer.exe" + " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -log"};
-                        File.WriteAllLines(textBox2.Text+@"\c.bat", lines);
-                        Process p = new Process();
-                        p.StartInfo.FileName = "c.bat";
-                        p.StartInfo.WorkingDirectory = textBox2.Text;
-                        p.Start();
-                        p.WaitForExit(1000);
-                        File.Delete(textBox2.Text+@"\c.bat");
-                        Process[] u = Process.GetProcessesByName("cmd");
-                        if (u.GetLength(0) > 0)
-                        {
-                            u[0].Kill();
-                        }
-                        Close();
+                        var nem = new ProcessStartInfo(textBox2.Text+@"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -log");
+                        nem.UseShellExecute = false;
+                        Process.Start(nem);
                     }
                 }
             }
