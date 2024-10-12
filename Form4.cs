@@ -40,7 +40,7 @@ namespace Satisfactory_서버용
             InitializeComponent();
             textBox2.Text = data;
 
-            if (File.Exists(textBox2.Text + @"\FactoryServer.exe"))
+            if (File.Exists(textBox2.Text + @"FactoryServer.exe"))
             {
                 MessageBox.Show("파일이 없습니다 다시 서버다운 해 주세요");
                 Close();
