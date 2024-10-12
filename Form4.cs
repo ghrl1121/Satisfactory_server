@@ -23,7 +23,6 @@ namespace Satisfactory_서버용
             
             InitializeComponent();
             //파일 확인 채크
-            
             Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");
             if(M.GetLength(0) > 0)
             {
@@ -40,6 +39,12 @@ namespace Satisfactory_서버용
         {
             InitializeComponent();
             textBox2.Text = data;
+
+            if (File.Exists(textBox2.Text + @"\FactoryServer.exe"))
+            {
+                MessageBox.Show("파일이 없습니다 다시 서버다운 해 주세요");
+                Close();
+            }
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
