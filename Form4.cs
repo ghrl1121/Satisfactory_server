@@ -39,12 +39,6 @@ namespace Satisfactory_서버용
         {
             InitializeComponent();
             textBox2.Text = data;
-
-            if (File.Exists(textBox2.Text + @"FactoryServer.exe"))
-            {
-                MessageBox.Show("파일이 없습니다 다시 서버다운 해 주세요");
-                Close();
-            }
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -88,14 +82,14 @@ namespace Satisfactory_서버용
                     if (checkBox1.Checked == true)
                     {
                         //클릭했을때 만들기                        
-                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe" , " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -log");
+                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe" , " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                         nem.UseShellExecute = false;
                         Process.Start(nem);
                     }
                     else
                     {
                         //없음
-                        var nem = new ProcessStartInfo(textBox2.Text+@"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -log");
+                        var nem = new ProcessStartInfo(textBox2.Text+@"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                         nem.UseShellExecute = false;
                         Process.Start(nem);
                     }

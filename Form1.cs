@@ -173,7 +173,7 @@ namespace Satisfactory_서버용
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if(Directory.Exists(textBox1.Text))
+            if(File.Exists(textBox1.Text+ @"\FactoryServer.exe"))
             { 
                 Form4 d = new Form4(textBox1.Text);                             
                 d.Show();    
