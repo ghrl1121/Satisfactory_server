@@ -231,6 +231,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox1);
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(366, 374);
+            this.MinimumSize = new System.Drawing.Size(366, 374);
             this.Name = "Form4";
             this.Text = "실행 설정";
             this.ResumeLayout(false);
