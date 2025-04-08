@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Diagnostics;
-using System.Security.Cryptography;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
+using System.Windows.Forms;
 
 
 namespace Satisfactory_서버용
@@ -40,7 +31,7 @@ namespace Satisfactory_서버용
                 textBox1.Text = "설치 먼저 해 주세요";
             }
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("잠깐 steamcmd.exe 가 있어야 됩니다.");
@@ -60,7 +51,7 @@ namespace Satisfactory_서버용
                 if (checkBox1.Checked == true)
                 {
                     MessageBox.Show("잠깐!! 폴더를 한글로 하지 마세요 요류납니다!!\r\n예) 딱다구리폴더에 steamcmd.exe 넣었으면 실행후 바로 종료됨(오류임)");
-                 AC:
+                AC:
                     OpenFileDialog A = new OpenFileDialog();
                     A.Title = "steamcmd.exe 선택하세요";
                     A.FileName = "steamcmd.exe";
@@ -84,10 +75,14 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("beta.lal", ping);
                                 //설치
-                                
-                                var stramcd = new ProcessStartInfo(saveFileDialog.FileName, "+login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit");
-                                stramcd.UseShellExecute = false;
-                                Process.Start(stramcd);
+                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
+                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                                Process process = new Process();
+                                process.StartInfo.FileName = "commd.bat";
+                                process.Start();
+                                process.WaitForExit();
+                                process.Close();
+                                File.Delete("commd.bat");
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
@@ -95,14 +90,7 @@ namespace Satisfactory_서버용
                             {
                                 MessageBox.Show("저장될 위치를 넣어 주세요!");
                                 goto C;
-                            }
-                            string fileName = A.FileName;
-                            Process p = new Process();
-                            p.StartInfo.FileName = "commd.bat";
-                            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(fileName);
-                            p.Start();
-                            p.WaitForExit(1000);
-                            File.Delete(Path.GetDirectoryName(fileName) + "\\commd.bat");
+                            }                           
                         }
                         else
                         {
@@ -144,9 +132,14 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("txat.lal", ping);
                                 //설치
-                                var steamcmd = new ProcessStartInfo(A.FileName, "+login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit");
-                                steamcmd.UseShellExecute = false;
-                                Process.Start(steamcmd);
+                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit", "pause" };
+                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
+                                Process process = new Process();
+                                process.StartInfo.FileName = "commd.bat";
+                                process.Start();
+                                process.WaitForExit();
+                                process.Close();
+                                File.Delete("commd.bat");
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
@@ -154,7 +147,7 @@ namespace Satisfactory_서버용
                             {
                                 MessageBox.Show("저장될 위치를 넣어 주세요!");
                                 goto C;
-                            }                         
+                            }
                         }
                         else
                         {
@@ -173,16 +166,16 @@ namespace Satisfactory_서버용
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if(File.Exists(textBox1.Text+ @"\FactoryServer.exe"))
-            { 
-                Form4 d = new Form4(textBox1.Text);                             
-                d.Show();    
+            if (File.Exists(textBox1.Text + @"\FactoryServer.exe"))
+            {
+                Form4 d = new Form4(textBox1.Text);
+                d.Show();
             }
             else
             {
                 MessageBox.Show("파일이 없습니다! \n서버 다운후 다시 클릭하세요");
             }
-                    
+
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -196,7 +189,7 @@ namespace Satisfactory_서버용
                 MessageBox.Show("실행후 만들고 눌려 주세요!");
             }
         }
-        
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/ghrl1121/Satisfactory_server");
@@ -219,7 +212,7 @@ namespace Satisfactory_서버용
                     textBox1.Text = "파일이 없습니다 설치 먼저 해주세요";
                 }
             }
-            else if (checkBox1.Checked == false) 
+            else if (checkBox1.Checked == false)
             {
                 button1.Text = "얼리 액세스\n\r서버다운로드";
                 if (File.Exists("txat.lal"))

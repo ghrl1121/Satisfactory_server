@@ -1,30 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.IO;
-using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace Satisfactory_서버용
 {
     public partial class Form4 : Form
     {
-       
+
 
         public Form4()
         {
-            
+
             InitializeComponent();
-            //파일 확인 채크
-            Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");
-            if(M.GetLength(0) > 0)
+            //실행 채크
+            var unme = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
+            if (unme.Length > 0)
             {
                 label8.Text = "실행중입니다. \n\r포트를 바꿔주세요 오류 납니다!\n\r옆 중지 누르면 서버중지(전부)됩니다";
                 textBox1.Text = "15778";
@@ -33,7 +23,7 @@ namespace Satisfactory_서버용
                 label2.Text = "15001";
                 linkLabel2.Text = "중지";
             }
-            
+
         }
         public Form4(string data)
         {
@@ -43,8 +33,8 @@ namespace Satisfactory_서버용
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process[] M = Process.GetProcessesByName("UE4Server-Win64-Shipping");               
-            if(M.GetLongLength(0)>0)
+            Process[] M = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
+            if (M.GetLongLength(0) > 0)
             {
                 M[0].Kill();
                 M[0].WaitForExit(1000);
@@ -73,7 +63,7 @@ namespace Satisfactory_서버용
             else
             {
                 // 80 이하 적을때
-                if(Query < 79 || Port < 79)
+                if (Query < 79 || Port < 79)
                 {
                     MessageBox.Show("80이상을 넣어 주세요");
                 }
@@ -82,19 +72,21 @@ namespace Satisfactory_서버용
                     if (checkBox1.Checked == true)
                     {
                         //클릭했을때 만들기                        
-                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe" , " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
+                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                         nem.UseShellExecute = false;
                         Process.Start(nem);
+                        Close();
                     }
                     else
                     {
                         //없음
-                        var nem = new ProcessStartInfo(textBox2.Text+@"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
+                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                         nem.UseShellExecute = false;
                         Process.Start(nem);
+                        Close();
                     }
                 }
             }
-        }    
+        }
     }
 }
