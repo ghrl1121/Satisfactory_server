@@ -75,14 +75,15 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("beta.lal", ping);
                                 //설치
-                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
+                                string[] lines = { "@echo off","cd "+A.FileName+"steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
                                 File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
                                 Process process = new Process();
                                 process.StartInfo.FileName = "commd.bat";
+                                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(A.FileName);
                                 process.Start();
-                                process.WaitForExit();
+                                process.WaitForExit(1000);
                                 process.Close();
-                                File.Delete("commd.bat");
+                                File.Delete(Path.GetDirectoryName(A.FileName) + "\\commd.bat");
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
@@ -132,14 +133,15 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("txat.lal", ping);
                                 //설치
-                                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit", "pause" };
+                                string[] lines = { "@echo off","steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit", "pause" };
                                 File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
                                 Process process = new Process();
                                 process.StartInfo.FileName = "commd.bat";
+                                process.StartInfo.WorkingDirectory = Path.GetDirectoryName(A.FileName);
                                 process.Start();
-                                process.WaitForExit();
+                                process.WaitForExit(1000);
                                 process.Close();
-                                File.Delete("commd.bat");
+                                File.Delete(Path.GetDirectoryName(A.FileName) + "\\commd.bat");
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
