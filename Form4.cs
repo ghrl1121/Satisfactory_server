@@ -74,7 +74,6 @@ namespace Satisfactory_서버용
                         {
                             //실행중...
                             //대기시간
-                            //루트
                         }
                         else
                         {
