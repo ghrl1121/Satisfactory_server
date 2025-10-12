@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Security.Permissions;
 using System.Timers;
 using System.Windows.Forms;
@@ -78,9 +79,15 @@ namespace Satisfactory_서버용
                         else
                         {
                             //다시시작
-                            var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
+                            /*var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                             nem.UseShellExecute = false;
-                            Process.Start(nem);
+                            Process.Start(nem);*/
+                            Process process = new Process();
+                            process.StartInfo.FileName = "FactoryServer.exe";
+                            process.StartInfo.Arguments = " -ServerQusryPort=" + Query + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log";
+                            process.StartInfo.WorkingDirectory = textBox2.Text;
+                            process.Start();
+                            process.WaitForExit(5000);
                             //대기시간
                         }
                         goto A;
@@ -93,18 +100,21 @@ namespace Satisfactory_서버용
                         {
                             //실행중
                             //대기시간
-                            //루트
                         }
                         else
                         {
                             //없음
-                            var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
+                            /*var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                             nem.UseShellExecute = false;
-                            Process.Start(nem);
+                            Process.Start(nem);*/
                             //대기시간
-                            timer1.Start();
-                            timer1.Interval = 60000; 
-                            timer1.Stop();
+                            Process process = new Process();
+                            process.StartInfo.FileName = "FactoryServer.exe";
+                            process.StartInfo.Arguments = " -ServerQusryPort=" + Query + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log";
+                            process.StartInfo.WorkingDirectory = textBox2.Text;
+                            process.Start();
+                            process.WaitForExit(5000);
+
                         }
                         goto A;
                     }
