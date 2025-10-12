@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security.Permissions;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Satisfactory_서버용
@@ -17,10 +19,6 @@ namespace Satisfactory_서버용
             if (unme.Length > 0)
             {
                 label8.Text = "실행중입니다. \n\r포트를 바꿔주세요 오류 납니다!\n\r옆 중지 누르면 서버중지(전부)됩니다";
-                textBox1.Text = "15778";
-                textBox3.Text = "7778";
-                //실행할때마다 올려야하는데...;;
-                label2.Text = "15001";
                 linkLabel2.Text = "중지";
             }
 
@@ -53,8 +51,6 @@ namespace Satisfactory_서버용
             int Query = int.Parse(textBox1.Text);
             //포트 게임
             int Port = int.Parse(textBox3.Text);
-            //포트 신호(고정값)
-            string Beacon = label2.Text;
             //아무것도 없을경우
             if (textBox1.Text == "" || textBox3.Text == "")
             {
@@ -71,19 +67,55 @@ namespace Satisfactory_서버용
                 {
                     if (checkBox1.Checked == true)
                     {
-                        //클릭했을때 만들기                        
-                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
-                        nem.UseShellExecute = false;
-                        Process.Start(nem);
-                        Close();
+                    A:
+                        var unpe = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
+                        if (unpe.Length > 0)
+                        {
+                            //실행중...
+                            //대기시간
+                            timer1.Start();
+                            timer1.Interval = 60000;
+                            timer1.Stop();
+                            //루트
+                        }
+                        else
+                        {
+                            //다시시작
+                            var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
+                            nem.UseShellExecute = false;
+                            Process.Start(nem);
+                            //대기시간
+                            timer1.Start();
+                            timer1.Interval = 60000;
+                            timer1.Stop();
+                        }
+                        goto A;
                     }
                     else
                     {
-                        //없음
-                        var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -BeaconPort=" + Beacon + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
-                        nem.UseShellExecute = false;
-                        Process.Start(nem);
-                        Close();
+                    A:
+                        var unpe = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
+                        if (unpe.Length > 0)
+                        {
+                            //실행중
+                            //대기시간
+                            timer1.Start();
+                            timer1.Interval = 60000;
+                            timer1.Stop();
+                            //루트
+                        }
+                        else
+                        {
+                            //없음
+                            var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
+                            nem.UseShellExecute = false;
+                            Process.Start(nem);
+                            //대기시간
+                            timer1.Start();
+                            timer1.Interval = 60000; 
+                            timer1.Stop();
+                        }
+                        goto A;
                     }
                 }
             }
