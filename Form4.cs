@@ -73,9 +73,6 @@ namespace Satisfactory_서버용
                         {
                             //실행중...
                             //대기시간
-                            timer1.Start();
-                            timer1.Interval = 60000;
-                            timer1.Stop();
                             //루트
                         }
                         else
@@ -85,9 +82,6 @@ namespace Satisfactory_서버용
                             nem.UseShellExecute = false;
                             Process.Start(nem);
                             //대기시간
-                            timer1.Start();
-                            timer1.Interval = 60000;
-                            timer1.Stop();
                         }
                         goto A;
                     }
@@ -99,9 +93,6 @@ namespace Satisfactory_서버용
                         {
                             //실행중
                             //대기시간
-                            timer1.Start();
-                            timer1.Interval = 60000;
-                            timer1.Stop();
                             //루트
                         }
                         else
