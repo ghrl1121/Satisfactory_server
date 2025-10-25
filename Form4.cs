@@ -17,13 +17,20 @@ namespace Satisfactory_서버용
 
         private Thread thd;
         delegate void CrossCall();
+        /*private static bool mtes;
+        private Mutex ntx1 = new Mutex(false,"ntxobj",out  mtes);*/
         public Form4()
         {
             InitializeComponent();
+        }
+        public Form4(string data)
+        {
+            InitializeComponent();
+            textBox2.Text = data;
             //실행 채크
             //반복으로 확인하기
             int i = 0;
-            while (i < 2)
+            while (i < 10)
             {
                 i++;
                 var unme = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
@@ -34,12 +41,6 @@ namespace Satisfactory_서버용
                 }
             }
         }
-        public Form4(string data)
-        {
-            InitializeComponent();
-            textBox2.Text = data;
-        }
-
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process[] M = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
@@ -47,7 +48,6 @@ namespace Satisfactory_서버용
             {
                 M[0].Kill();
                 M[0].WaitForExit(1000);
-                Close();
             }
         }
 
@@ -99,8 +99,7 @@ namespace Satisfactory_서버용
                     var unpe = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
                     if (unpe.Length > 0)
                     {
-                        //실행중...
-                        label2.Text = "실행중...";
+                        //실행중...                       
                         //대기시간
                         Thread.Sleep(3000);
                     }
@@ -161,7 +160,7 @@ namespace Satisfactory_서버용
         {
             thd.Resume();
             label2.Text = "다시시작";
-            label2.Text = "실행중...";
+            label2.Text = "실행중...-3초마다 확인-";
             button2.Enabled = true;
             button3.Enabled = false;
         }

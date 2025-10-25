@@ -2,12 +2,16 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using System.Threading;
 
 
 namespace Satisfactory_서버용
 {
     public partial class Form1 : Form
     {
+        /*private static bool mtxSuccess;
+        private static readonly Mutex mutex = new Mutex(false, "mtxObj", out mtxSuccess);
+        private Mutex mtx1 = mutex;*/
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +34,15 @@ namespace Satisfactory_서버용
             {
                 textBox1.Text = "설치 먼저 해 주세요";
             }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            /*if(!mtxSuccess)
+            {
+                MessageBox.Show("이미 실행중 입니다!");
+                Application.Exit();
+            }
+            mtx1.ReleaseMutex();*/
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -227,6 +240,24 @@ namespace Satisfactory_서버용
                 {
                     textBox1.Text = "파일이 없습니다 설치 먼저 해주세요";
                 }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("주의 이건 파일 찾기 용입니다!\r\n" +
+                "다른것으로 교체를 할시 문제가 생기면 책임을 지지 않겠습니다");
+            OpenFileDialog A = new OpenFileDialog();
+            A.Title = "FactoryServer.exe 선택하세요";
+            A.FileName = "FactoryServer.exe";
+            A.Filter = "실행파일(*.exe)|*.exe;";
+            DialogResult d = A.ShowDialog();
+            if (d == DialogResult.OK)
+            {
+                //선언하면 저장
+                textBox1.Text = Path.GetDirectoryName(A.FileName);
+                string[] ping = { textBox1.Text };
+                File.WriteAllLines("txat.lal", ping);
             }
         }
     }

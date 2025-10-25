@@ -183,7 +183,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(12, 300);
+            this.button2.Location = new System.Drawing.Point(12, 390);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 18;
@@ -194,7 +194,7 @@
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(93, 300);
+            this.button3.Location = new System.Drawing.Point(93, 390);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 19;
@@ -205,7 +205,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 270);
+            this.label2.Location = new System.Drawing.Point(12, 360);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 12);
             this.label2.TabIndex = 20;
@@ -214,8 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(350, 335);
+            this.ClientSize = new System.Drawing.Size(352, 441);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -234,8 +233,8 @@
             this.Controls.Add(this.checkBox1);
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(366, 374);
-            this.MinimumSize = new System.Drawing.Size(366, 374);
+            this.MaximumSize = new System.Drawing.Size(368, 480);
+            this.MinimumSize = new System.Drawing.Size(368, 480);
             this.Name = "Form4";
             this.Text = "실행 설정";
             this.ResumeLayout(false);
