@@ -9,9 +9,9 @@ namespace Satisfactory_서버용
 {
     public partial class Form1 : Form
     {
-        /*private static bool mtxSuccess;
-        private static readonly Mutex mutex = new Mutex(false, "mtxObj", out mtxSuccess);
-        private Mutex mtx1 = mutex;*/
+        private static bool mtxSuccess;
+        private static readonly Mutex mutex = new Mutex(true, "mtxObj", out mtxSuccess);
+        private Mutex mtx1 = mutex;
         public Form1()
         {
             InitializeComponent();
@@ -37,12 +37,12 @@ namespace Satisfactory_서버용
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*if(!mtxSuccess)
+            if(!mtxSuccess)
             {
                 MessageBox.Show("이미 실행중 입니다!");
                 Application.Exit();
             }
-            mtx1.ReleaseMutex();*/
+            mtx1.ReleaseMutex();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace Satisfactory_서버용
                                 process.StartInfo.WorkingDirectory = Path.GetDirectoryName(A.FileName);
                                 process.Start();
                                 process.WaitForExit(1000);
-                                process.Close();
+                                //process.Close(); //오류로 막음
                                 File.Delete(Path.GetDirectoryName(A.FileName) + "\\commd.bat");
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
@@ -153,7 +153,7 @@ namespace Satisfactory_서버용
                                 process.StartInfo.WorkingDirectory = Path.GetDirectoryName(A.FileName);
                                 process.Start();
                                 process.WaitForExit(1000);
-                                process.Close();
+                                //process.Close(); //오류로 막음
                                 File.Delete(Path.GetDirectoryName(A.FileName) + "\\commd.bat");
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
@@ -259,6 +259,12 @@ namespace Satisfactory_서버용
                 string[] ping = { textBox1.Text };
                 File.WriteAllLines("txat.lal", ping);
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mtx1.Close();
+            Application.Exit();
         }
     }
 }

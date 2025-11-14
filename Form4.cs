@@ -17,8 +17,8 @@ namespace Satisfactory_서버용
 
         private Thread thd;
         delegate void CrossCall();
-        /*private static bool mtes;
-        private Mutex ntx1 = new Mutex(false,"ntxobj",out  mtes);*/
+        private static bool mtes;
+        private Mutex ntx1 = new Mutex(true,"ntxobj",out  mtes);
         public Form4()
         {
             InitializeComponent();
@@ -41,6 +41,16 @@ namespace Satisfactory_서버용
                 }
             }
         }
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            if (!mtes)
+            {
+                MessageBox.Show("실행중...");
+                Close();
+                ntx1.Close();
+            }            
+            //ntx1.ReleaseMutex();//한번 헤체 //에려로 막음                                
+        }
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process[] M = Process.GetProcessesByName("FactoryServer-Win64-Shipping-Cmd");
@@ -48,6 +58,8 @@ namespace Satisfactory_서버용
             {
                 M[0].Kill();
                 M[0].WaitForExit(1000);
+                ntx1.Close();
+                Close();
             }
         }
 
@@ -108,7 +120,7 @@ namespace Satisfactory_서버용
                         //다시시작
                         /*var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                         nem.UseShellExecute = false;
-                        Process.Start(nem);*/
+                        Process.Start(nem);*/ //변경
                         Process process = new Process();
                         process.StartInfo.FileName = "FactoryServer.exe";
                         process.StartInfo.Arguments = " -ServerQusryPort=" + Query + " -port=" + Port + " -unattended" + " -NoAsyncLoadingThread -UseMultithreadForDS -log";
@@ -136,7 +148,7 @@ namespace Satisfactory_서버용
                         //다시시작
                         /*var nem = new ProcessStartInfo(textBox2.Text + @"\FactoryServer.exe", " -ServerQusryPort=" + Query + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log");
                         nem.UseShellExecute = false;
-                        Process.Start(nem);*/
+                        Process.Start(nem);*/ //변경
                         Process process = new Process();
                         process.StartInfo.FileName = "FactoryServer.exe";
                         process.StartInfo.Arguments = " -ServerQusryPort=" + Query + " -port=" + Port + " -NoAsyncLoadingThread -UseMultithreadForDS -log";
@@ -163,6 +175,11 @@ namespace Satisfactory_서버용
             label2.Text = "실행중...-3초마다 확인-";
             button2.Enabled = true;
             button3.Enabled = false;
+        }
+
+        private void Form4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ntx1.Close();          
         }
     }
 }
