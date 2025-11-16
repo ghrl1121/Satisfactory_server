@@ -88,16 +88,20 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("beta.lal", ping);
                                 //설치
-                                string[] lines = { "@echo off","cd "+A.FileName+"steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit", "pause" };
-                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
                                 Process process = new Process();
-                                process.StartInfo.FileName = "commd.bat";
+                                //실행될 앱(프로그램)
+                                process.StartInfo.FileName = "steamcmd.exe";
+                                //설정값
+                                process.StartInfo.Arguments = "+login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta experimental validate  +quit";
+                                //위치
                                 process.StartInfo.WorkingDirectory = Path.GetDirectoryName(A.FileName);
+                                //실행
                                 process.Start();
+                                //대기
                                 process.WaitForExit(1000);
+                                //반납
                                 //process.Close(); //오류로 막음
-                                File.Delete(Path.GetDirectoryName(A.FileName) + "\\commd.bat");
-                                //필요없는 파일 삭제
+                                //삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
                             }
                             else
@@ -146,17 +150,22 @@ namespace Satisfactory_서버용
                                 string[] ping = { textBox1.Text };
                                 File.WriteAllLines("txat.lal", ping);
                                 //설치
-                                string[] lines = { "@echo off","steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 1690800 -beta public validate +quit", "pause" };
-                                File.WriteAllLines(Path.GetDirectoryName(A.FileName) + "\\commd.bat", lines);
                                 Process process = new Process();
-                                process.StartInfo.FileName = "commd.bat";
+                                //실행할 앱(프로그렘)
+                                process.StartInfo.FileName = "steamcmd.exe";
+                                //설정값
+                                process.StartInfo.Arguments = "+login anonymous +force_install_dir "+mest+ " +app_update 1690800 -beta public validate +quit";
+                                //파일 위치
                                 process.StartInfo.WorkingDirectory = Path.GetDirectoryName(A.FileName);
+                                //실행
                                 process.Start();
+                                //대기
                                 process.WaitForExit(1000);
-                                //process.Close(); //오류로 막음
-                                File.Delete(Path.GetDirectoryName(A.FileName) + "\\commd.bat");
+                                //반납
+                                //process.Close(); //일시 막음
                                 //필요없는 파일 삭제
                                 File.Delete(Path.GetDirectoryName(mest) + @"\b.ini");
+
                             }
                             else
                             {
